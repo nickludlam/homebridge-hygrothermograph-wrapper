@@ -1,0 +1,100 @@
+{
+  "pluginAlias": "Hygrotermograph",
+  "pluginType": "accessory",
+  "singular": false,
+  "headerDisplay": null,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Accessory Name",
+        "type": "string",
+        "format": "string",
+        "default": "Temperature & Humidity",
+        "minLength": 1,
+        "required": true
+      },
+      "address": {
+        "title": "Device MAC Address",
+        "type": "string",
+        "format": "string",
+        "placeholder": "e.g. 00:00:00:00:00:00",
+        "description": "Optional. Specify when running multiple devices"
+      },
+      "temperatureName": {
+        "title": "Temperature",
+        "type": "string",
+        "format": "string",
+        "default": "Temperature"
+      },
+      "humidityName": {
+        "title": "Humidity",
+        "type": "string",
+        "format": "string",
+        "default": "Humidity"
+      },
+      "timeout": {
+        "title": "Timeout (minutes)",
+        "type": "integer",
+        "default": 15,
+        "description": "Time in minutes after last contact when the accessory should be regarded as unreachable. If set to 0, timeout will be disabled."
+      },
+      "lowBattery": {
+        "title": "Low Battery Threshold",
+        "type": "integer",
+        "default": 10,
+        "description": "At what battery percentage Homekit should start warning about low battery."
+      },
+      "temperatureOffset": {
+        "title": "Offset - Temperature",
+        "type": "integer",
+        "default": 0,
+        "description": "An offset to apply to temperature values for calibration if measured values are incorrect.",
+        "condition": {
+          "functionBody": "return ['Hygrotermograph'].includes(model.type);"
+        }
+      },
+      "humidityOffset": {
+        "title": "Offset - Humidity",
+        "type": "integer",
+        "default": 0,
+        "description": "An offset to apply to humidity values for calibration if measured values are incorrect.",
+        "condition": {
+          "functionBody": "return ['Hygrotermograph'].includes(model.type);"
+        }
+      }
+    }
+  },
+  "layout": [
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": ["name"]
+    },
+    {
+      "type": "flex",
+      "title": "<strong>Custom Name</strong>",
+      "flex-flow": "column wrap",
+      "items": [
+        "temperatureName",
+        "humidityName"
+      ]
+    },
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": ["address"]
+    },
+    {
+      "type": "fieldset",
+      "title": "Advanced configuration",
+      "expandable": true,
+      "items": [
+        "timeout",
+        "lowBattery",
+        "temperatureOffset",
+        "humidityOffset"
+      ]
+    }
+  ]
+}

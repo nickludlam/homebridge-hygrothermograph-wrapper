@@ -1,0 +1,36 @@
+{
+  "name": "homebridge-hygrothermograph-wrapper",
+  "version": "1.0.0",
+  "description": "Hombridge plugin for a basic Python sniffer to fetch temperature and humidity BTLE advertisement data",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickludlam/homebridge-hygrothermograph-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nickludlam/homebridge-hygrothermograph-wrapper/issues"
+  },
+  "engines": {
+    "node": ">=14.18.1",
+    "homebridge": ">=1.3.5"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "humidity-sensor",
+    "raspberry-pi",
+    "homebridge"
+  ],
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "files": [
+    "lib/pvvx_hygrothermograph_sniffer.py"
+  ],
+  "author": "Nick Ludlam <nick@recoil.org> (https://nick.recoil.org/)",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
